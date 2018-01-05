@@ -78,11 +78,11 @@ public class JFastTextTest {
     }
 
     @Test
-    public void test07GetVector() throws Exception {
+    public void test07GetWordVector() throws Exception {
         JFastText jft = new JFastText();
         jft.loadModel("src/test/resources/models/supervised.model.bin");
         String word = "soccer";
-        List<Float> vec = jft.getVector(word);
+        List<Float> vec = jft.getWordVector(word);
         System.out.printf("\nWord embedding vector of '%s': %s\n", word, vec);
     }
 

@@ -17,6 +17,7 @@ import org.bytedeco.javacpp.tools.InfoMapper;
 @Properties(value = @Platform(include = {"fasttext_wrapper.h", "fasttext_wrapper_javacpp.h"}),
         target = "com.github.jfasttext.FastTextWrapper")
 public class FastTextWrapper implements InfoMapper {
+    @Override
     public void map(InfoMap infoMap) {
         infoMap
             .put(new Info("fasttext::real").pointerTypes("float"))
