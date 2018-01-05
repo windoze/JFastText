@@ -165,7 +165,6 @@ public class FastTextWrapper extends com.github.jfasttext.config.FastTextWrapper
 /**
  * FastText's wrapper
  */
-
     @Namespace("FastTextWrapper") @NoOffset public static class FastTextApi extends Pointer {
         static { Loader.load(); }
         /** Pointer cast constructor. Invokes {@link Pointer#Pointer(Pointer)}. */

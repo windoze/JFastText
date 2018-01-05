@@ -7,12 +7,9 @@
  * FastText's wrapper
  */
 namespace FastTextWrapper {
-
-    using namespace fasttext;
-
     class FastTextApi {
     private:
-        FastText fastText;
+        fasttext::FastText fastText;
     public:
         FastTextApi();
         // We don't make runCmd() a static method so that Loader.load() is always be called in FastTextApi().
@@ -26,10 +23,10 @@ namespace FastTextWrapper {
         // Check if model was loaded successfully
         bool isModelLoaded();
         std::vector<std::string> predict(const std::string&, int32_t);
-        std::vector<std::pair<real,std::string>> predictProba(const std::string&, int32_t);
-        std::vector<real> getWordVector(const std::string&);
-        std::vector<real> getVector(const std::string&);
-        std::vector<real> getSubwordVector(const std::string&);
+        std::vector<std::pair<fasttext::real,std::string>> predictProba(const std::string&, int32_t);
+        std::vector<fasttext::real> getWordVector(const std::string&);
+        std::vector<fasttext::real> getVector(const std::string&);
+        std::vector<fasttext::real> getSubwordVector(const std::string&);
         std::vector<std::string> getWords();
         std::vector<std::string> getLabels();
         std::string getWord(int32_t);

@@ -8,9 +8,6 @@
  * FastText's wrapper
  */
 namespace FastTextWrapper {
-
-    using namespace fasttext;
-
     FastTextApi::FastTextApi() {}
 
     void FastTextApi::runCmd(int argc, char **argv) {
@@ -63,7 +60,7 @@ namespace FastTextWrapper {
     }
 
     std::vector<std::string> FastTextApi::predict(const std::string& text, int32_t k) {
-        std::vector<std::pair<real,std::string>> predictions = predictProba(text, k);
+        std::vector<std::pair<fasttext::real,std::string>> predictions = predictProba(text, k);
         std::vector<std::string> labels;
         for (auto it = predictions.cbegin(); it != predictions.cend(); ++it) {
             labels.push_back(it->second);
@@ -71,28 +68,28 @@ namespace FastTextWrapper {
         return labels;
     }
 
-    std::vector<std::pair<real,std::string>> FastTextApi::predictProba(
+    std::vector<std::pair<fasttext::real,std::string>> FastTextApi::predictProba(
             const std::string& text, int32_t k) {
-        std::vector<std::pair<real,std::string>> predictions;
+        std::vector<std::pair<fasttext::real,std::string>> predictions;
         std::istringstream in(text);
         fastText.predict(in, k, predictions);
         return predictions;
     }
 
-    std::vector<real> FastTextApi::getWordVector(const std::string& word) {
-        Vector vec(getDim());
+    std::vector<fasttext::real> FastTextApi::getWordVector(const std::string& word) {
+        fasttext::Vector vec(getDim());
         fastText.getWordVector(vec, word);
-        return std::vector<real>(vec.data(), vec.data() + vec.size());
+        return std::vector<fasttext::real>(vec.data(), vec.data() + vec.size());
     }
 
-    std::vector<real> FastTextApi::getVector(const std::string& word) {
+    std::vector<fasttext::real> FastTextApi::getVector(const std::string& word) {
         return getWordVector(word);
     }
 
-    std::vector<real> FastTextApi::getSubwordVector(const std::string& word) {
-        Vector vec(getDim());
+    std::vector<fasttext::real> FastTextApi::getSubwordVector(const std::string& word) {
+        fasttext::Vector vec(getDim());
         fastText.getSubwordVector(vec, word);
-        return std::vector<real>(vec.data(), vec.data() + vec.size());
+        return std::vector<fasttext::real>(vec.data(), vec.data() + vec.size());
     }
 
     std::vector<std::string> FastTextApi::getWords() {
