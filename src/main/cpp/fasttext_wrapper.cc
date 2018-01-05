@@ -86,9 +86,9 @@ namespace FastTextWrapper {
         return getWordVector(word);
     }
 
-    std::vector<fasttext::real> FastTextApi::getSubwordVector(const std::string& word) {
+    std::vector<fasttext::real> FastTextApi::getSubwordVector(const std::string& subword) {
         fasttext::Vector vec(getDim());
-        fastText.getSubwordVector(vec, word);
+        fastText.getSubwordVector(vec, subword);
         return std::vector<fasttext::real>(vec.data(), vec.data() + vec.size());
     }
 

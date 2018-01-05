@@ -97,6 +97,16 @@ public class JFastText {
         return wordVec;
     }
 
+    public List<Float> getSubwordVector(String subword) {
+        FastTextWrapper.RealVector rv = fta.getSubwordVector(subword);
+        List<Float> subwordVec = new ArrayList<>();
+        for (int i = 0; i < rv.size(); i++) {
+            subwordVec.add(rv.get(i));
+        }
+        return subwordVec;
+    }
+
+
     public int getNWords() {
         return fta.getNWords();
     }
