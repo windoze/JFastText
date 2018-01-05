@@ -9,7 +9,7 @@ are supported via the command line interface.
 
 JFastText is ideal for building fast text classifiers in Java.
 
-## Maven dependency
+## ~~Maven dependency~~
 ```xml
 <dependency>
   <groupId>com.github.vinhkhuc</groupId>
