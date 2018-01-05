@@ -193,7 +193,8 @@ public class FastTextWrapper extends com.github.jfasttext.config.FastTextWrapper
         public native void unloadModel();
         public native void test(@StdString BytePointer arg0, int arg1);
         public native void test(@StdString String arg0, int arg1);
-        // TODO: Check if model was loaded
+        // Check if model was loaded successfully
+        public native @Cast("bool") boolean isModelLoaded();
         public native @ByVal StringVector predict(@StdString BytePointer arg0, int arg1);
         public native @ByVal StringVector predict(@StdString String arg0, int arg1);
         public native @ByVal FloatStringPairVector predictProba(@StdString BytePointer arg0, int arg1);

@@ -58,6 +58,10 @@ namespace FastTextWrapper {
         fastText.test(ifs, k);
     }
 
+    bool FastTextApi::isModelLoaded() {
+        return bool(fastText.getModel());
+    }
+
     std::vector<std::string> FastTextApi::predict(const std::string& text, int32_t k) {
         std::vector<std::pair<real,std::string>> predictions = predictProba(text, k);
         std::vector<std::string> labels;

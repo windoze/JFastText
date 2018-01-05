@@ -3,6 +3,7 @@ package com.github.jfasttext;
 import org.bytedeco.javacpp.PointerPointer;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,12 +25,16 @@ public class JFastText {
 
     public void loadModel(String modelFile) throws Exception {
         if (!new File(modelFile).exists()) {
-            throw new Exception("Model file doesn't exist!");
+            throw new FileNotFoundException("Model file doesn't exist!");
         }
         if (!fta.checkModel(modelFile)) {
-            throw new Exception("Model file's format is not compatible with this JFastText version!");
+            throw new IllegalArgumentException("Model file's format is not compatible with this JFastText version!");
         }
         fta.loadModel(modelFile);
+
+        if(!fta.isModelLoaded()) {
+            throw new ExceptionInInitializerError("Invalid model format. Check https://github.com/facebookresearch/fastText/issues/332");
+        }
     }
 
     public void unloadModel() {

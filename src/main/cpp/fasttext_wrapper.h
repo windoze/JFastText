@@ -23,7 +23,8 @@ namespace FastTextWrapper {
         // Java's GC doesn't collect memory allocated by native function calls.
         void unloadModel();
         void test(const std::string&, int32_t);
-        // TODO: Check if model was loaded
+        // Check if model was loaded successfully
+        bool isModelLoaded();
         std::vector<std::string> predict(const std::string&, int32_t);
         std::vector<std::pair<real,std::string>> predictProba(const std::string&, int32_t);
         std::vector<real> getWordVector(const std::string&);
