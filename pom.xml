@@ -6,7 +6,7 @@
 
     <groupId>com.github.vinhkhuc</groupId>
     <artifactId>jfasttext</artifactId>
-    <version>0.4-SNAPSHOT</version>
+    <version>0.4</version>
     <name>Java interface for fastText</name>
     <description>
         JFastText is a Java interface for fastText, a library for efficient learning of
@@ -119,20 +119,23 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-gpg-plugin</artifactId>-->
-                <!--<version>1.5</version>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>sign-artifacts</id>-->
-                        <!--<phase>verify</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>sign</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
@@ -142,8 +145,8 @@
                         <id>enforce</id>
                         <configuration>
                             <rules>
-                                <requireUpperBoundDeps />
-                                <dependencyConvergence />
+                                <requireUpperBoundDeps/>
+                                <dependencyConvergence/>
                             </rules>
                         </configuration>
                         <goals>
@@ -155,7 +158,7 @@
             <plugin>
                 <groupId>org.bytedeco</groupId>
                 <artifactId>javacpp</artifactId>
-                <version>1.3.1</version>
+                <version>1.3.4_skil-1.0.0</version>
                 <executions>
                     <execution>
                         <id>run-javacpp-parser</id>
@@ -234,7 +237,7 @@
         <dependency>
             <groupId>org.bytedeco</groupId>
             <artifactId>javacpp</artifactId>
-            <version>1.3.1</version>
+            <version>1.3.4_skil-1.0.0</version>
         </dependency>
     </dependencies>
 
