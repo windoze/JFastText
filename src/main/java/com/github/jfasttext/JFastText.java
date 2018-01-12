@@ -2,7 +2,16 @@ package com.github.jfasttext;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.nio.file.attribute.PosixFilePermission;
+import java.nio.file.attribute.PosixFilePermissions;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import org.bytedeco.javacpp.PointerPointer;
 
@@ -32,6 +41,36 @@ public class JFastText {
           "Model file's format is not compatible with this JFastText version!");
     }
     fta.loadModel(modelFile);
+
+    if (!fta.isModelLoaded()) {
+      throw new ExceptionInInitializerError(
+          "Invalid model format. Check https://github.com/facebookresearch/fastText/issues/332");
+    }
+  }
+
+  public void loadDefaultLanguageDetectionModel() {
+    String pathToDefaultModel = "lid.176.ftz";
+    InputStream modelIS = JFastText.class.getResourceAsStream(pathToDefaultModel);
+
+    // create a temp file and copy the content of the default model to it
+    Path pathToTempModel;
+    try {
+      pathToTempModel =
+          Files.createTempFile(
+              "lid.176.",
+              ".ftz",
+              PosixFilePermissions.asFileAttribute(
+                  new HashSet<>(
+                      Arrays.asList(
+                          PosixFilePermission.OWNER_READ, PosixFilePermission.OWNER_WRITE))));
+
+      Files.copy(modelIS, pathToTempModel, StandardCopyOption.REPLACE_EXISTING);
+    } catch (IOException e) {
+      e.printStackTrace();
+      return;
+    }
+
+    fta.loadModel(pathToTempModel.toString());
 
     if (!fta.isModelLoaded()) {
       throw new ExceptionInInitializerError(
@@ -218,5 +257,7 @@ public class JFastText {
   public static void main(String[] args) {
     JFastText jft = new JFastText();
     jft.runCmd(args);
+    //    jft.loadDefaultLanguageDetectionModel();
+    //    jft.unloadModel();
   }
 }

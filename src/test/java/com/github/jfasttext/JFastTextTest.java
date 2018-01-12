@@ -132,4 +132,14 @@ public class JFastTextTest {
     System.out.println("Unloading model ...");
     jft.unloadModel();
   }
+
+  /** Test loading default language detection model. */
+  @Test
+  public void test10LoadDefaultLanguageDetectionModel() {
+    JFastText jft = new JFastText();
+    System.out.println("Loading model ...");
+    jft.loadDefaultLanguageDetectionModel();
+    System.out.println("Unloading model ...");
+    jft.unloadModel();
+  }
 }
