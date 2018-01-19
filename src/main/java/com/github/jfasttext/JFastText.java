@@ -99,10 +99,14 @@ public class JFastText {
   }
 
   public List<String> predict(String text, int k) {
+    return predict(text, k, 0.0f);
+  }
+
+  public List<String> predict(String text, int k, float threshold) {
     if (k <= 0) {
       throw new IllegalArgumentException("k must be positive");
     }
-    FastTextWrapper.StringVector sv = fta.predict(text, k);
+    FastTextWrapper.StringVector sv = fta.predict(text, k, threshold);
     List<String> predictions = new ArrayList<>();
     for (int i = 0; i < sv.size(); i++) {
       predictions.add(sv.get(i).getString());
@@ -116,10 +120,14 @@ public class JFastText {
   }
 
   public List<ProbLabel> predictProba(String text, int k) {
+    return predictProba(text, k, 0.0f);
+  }
+
+  public List<ProbLabel> predictProba(String text, int k, float threshold) {
     if (k <= 0) {
       throw new IllegalArgumentException("k must be positive");
     }
-    FastTextWrapper.FloatStringPairVector fspv = fta.predictProba(text, k);
+    FastTextWrapper.FloatStringPairVector fspv = fta.predictProba(text, k, threshold);
     List<ProbLabel> probaPredictions = new ArrayList<>();
     for (int i = 0; i < fspv.size(); i++) {
       float logProb = fspv.first(i);

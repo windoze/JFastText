@@ -1,5 +1,6 @@
 package com.github.jfasttext;
 
+import com.github.jfasttext.JFastText.ProbLabel;
 import java.util.List;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -139,6 +140,18 @@ public class JFastTextTest {
     JFastText jft = new JFastText();
     System.out.println("Loading model ...");
     jft.loadDefaultLanguageDetectionModel();
+
+    System.out.println("Test English text...");
+    List<String> predictions = jft.predict("English text", 3, 0.01f);
+    for (String pred : predictions) {
+      System.out.println(pred);
+    }
+
+    System.out.println("Test Chinese text...");
+    List<ProbLabel> predictionProbas = jft.predictProba("中文文本", 3, 0.01f);
+    for (ProbLabel pred : predictionProbas) {
+      System.out.println(pred);
+    }
     System.out.println("Unloading model ...");
     jft.unloadModel();
   }

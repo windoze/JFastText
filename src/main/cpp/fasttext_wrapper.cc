@@ -60,7 +60,13 @@ namespace FastTextWrapper {
     }
 
     std::vector<std::string> FastTextApi::predict(const std::string& text, int32_t k) {
-        std::vector<std::pair<fasttext::real,std::string>> predictions = predictProba(text, k);
+        return predict(text, k, 0.0);
+    }
+
+    std::vector<std::string> FastTextApi::predict(const std::string& text, int32_t k,
+            fasttext::real threshold) {
+        std::vector<std::pair<fasttext::real,std::string>> predictions = predictProba(
+            text, k, threshold);
         std::vector<std::string> labels;
         for (auto it = predictions.cbegin(); it != predictions.cend(); ++it) {
             labels.push_back(it->second);
@@ -70,9 +76,14 @@ namespace FastTextWrapper {
 
     std::vector<std::pair<fasttext::real,std::string>> FastTextApi::predictProba(
             const std::string& text, int32_t k) {
+        return predictProba(text, k, 0.0);
+    }
+
+    std::vector<std::pair<fasttext::real,std::string>> FastTextApi::predictProba(
+            const std::string& text, int32_t k, fasttext::real threshold) {
         std::vector<std::pair<fasttext::real,std::string>> predictions;
         std::istringstream in(text);
-        fastText.predict(in, k, predictions);
+        fastText.predict(in, k, predictions, threshold);
         return predictions;
     }
 

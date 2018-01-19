@@ -196,8 +196,12 @@ public class FastTextWrapper extends com.github.jfasttext.config.FastTextWrapper
         public native @Cast("bool") boolean isModelLoaded();
         public native @ByVal StringVector predict(@StdString BytePointer arg0, int arg1);
         public native @ByVal StringVector predict(@StdString String arg0, int arg1);
+        public native @ByVal StringVector predict(@StdString BytePointer arg0, int arg1, @ByVal float arg2);
+        public native @ByVal StringVector predict(@StdString String arg0, int arg1, @ByVal float arg2);
         public native @ByVal FloatStringPairVector predictProba(@StdString BytePointer arg0, int arg1);
         public native @ByVal FloatStringPairVector predictProba(@StdString String arg0, int arg1);
+        public native @ByVal FloatStringPairVector predictProba(@StdString BytePointer arg0, int arg1, @ByVal float arg2);
+        public native @ByVal FloatStringPairVector predictProba(@StdString String arg0, int arg1, @ByVal float arg2);
         public native @ByVal RealVector getWordVector(@StdString BytePointer arg0);
         public native @ByVal RealVector getWordVector(@StdString String arg0);
         public native @ByVal RealVector getVector(@StdString BytePointer arg0);
