@@ -24,9 +24,9 @@ MacOSX 64bit.
 C++ compiler (g++ on Mac/Linux or cl.exe on Windows) is required to compile fastText's code.
 
 ```bash
-git clone --recursive https://github.com/vinhkhuc/JFastText
+git clone --recursive https://github.com/lidalei/JFastText.git
 cd JFastText
-mvn package
+mvn clean package
 ```
 
 ## Examples
