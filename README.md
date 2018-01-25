@@ -29,9 +29,6 @@ cd JFastText
 mvn clean package
 ```
 
-## Examples
-Examples on how to use JFastText can be found at [examples/api](examples/api) and [examples/cmd](examples/cmd).
-
 ## How to use
 
 ### Initialization
