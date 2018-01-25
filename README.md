@@ -67,6 +67,9 @@ String text = "What is the most popular sport in the US ?";
 JFastText.ProbLabel probLabel = jft.predictProba(text);
 System.out.printf("\nThe label of '%s' is '%s' with probability %f\n",
         text, probLabel.label, Math.exp(probLabel.logProb));
+
+// Unload model
+jft.unloadModel();
 ```
 
 ### FastText's command line
