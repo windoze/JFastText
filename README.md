@@ -24,13 +24,10 @@ MacOSX 64bit.
 C++ compiler (g++ on Mac/Linux or cl.exe on Windows) is required to compile fastText's code.
 
 ```bash
-git clone --recursive https://github.com/vinhkhuc/JFastText
+git clone --recursive https://github.com/lidalei/JFastText.git
 cd JFastText
-mvn package
+mvn clean package
 ```
-
-## Examples
-Examples on how to use JFastText can be found at [examples/api](examples/api) and [examples/cmd](examples/cmd).
 
 ## How to use
 
@@ -70,6 +67,9 @@ String text = "What is the most popular sport in the US ?";
 JFastText.ProbLabel probLabel = jft.predictProba(text);
 System.out.printf("\nThe label of '%s' is '%s' with probability %f\n",
         text, probLabel.label, Math.exp(probLabel.logProb));
+
+// Unload model
+jft.unloadModel();
 ```
 
 ### FastText's command line
