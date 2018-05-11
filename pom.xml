@@ -4,7 +4,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.github</groupId>
+  <groupId>com.github.windoze</groupId>
   <artifactId>jfasttext</artifactId>
   <version>0.1.0</version>
   <name>Java interface for fastText</name>
@@ -39,12 +39,20 @@
         <role>developer</role>
       </roles>
     </developer>
+    <developer>
+      <id>windoze</id>
+      <name>Windoze</name>
+      <url>https://github.com/windoze</url>
+      <roles>
+        <role>developer</role>
+      </roles>
+    </developer>
   </developers>
 
   <scm>
-    <connection>scm:git:https://github.com/lidalei/JFastText.git</connection>
-    <developerConnection>scm:git:git@github.com:lidalei/JFastText.git</developerConnection>
-    <url>https://github.com/lidalei/JFastText</url>
+    <connection>scm:git:https://github.com/windoze/JFastText.git</connection>
+    <developerConnection>scm:git:git@github.com:windoze/JFastText.git</developerConnection>
+    <url>https://github.com/windoze/JFastText</url>
   </scm>
 
   <properties>
